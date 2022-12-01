@@ -345,3 +345,7 @@ form {
  button:hover{
    cursor: pointer;
  }
+ .chart_container{
+  width:100%;
+  height:100%;
+ }
