@@ -81,3 +81,8 @@ function injectHTML(){
     //inject to html the current winning division or conference based on the comp of totals.
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
+
+_____
+______
+
