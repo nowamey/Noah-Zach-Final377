@@ -130,3 +130,8 @@ function compareChart(chart,compResults){
     chart.update();
 }
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
+
+
+_____
+______
+
