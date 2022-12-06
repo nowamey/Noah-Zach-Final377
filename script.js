@@ -8,9 +8,13 @@ async function mainEvent(){
     const results = await getData();
 
     const myChart = initChart(chartTarget,results)
+
+    //let rankings = getRankings(results,10);
+    //injectHTML(rankings)
+    //injectConf(results)
     
-    
-    let option1,option2 = 'Atlantic';
+    let option1 = 'Atlantic';
+    let option2 = 'Atlantic';
     console.log(results);
     divisionOne.addEventListener('change', (changeEvent) => {
         changeEvent.preventDefault();
@@ -64,11 +68,11 @@ function getTotals(teams,divisionOne,divisionTwo){
     console.log(divisionOne);
     console.log(divisionTwo);
 
-    let totals = {divisionOne:div1Wins,divisionTwo:div2Wins}
+    let totals = [divisionOne,divisionTwo,div1Wins,div2Wins]
     console.log(totals)
     return totals
 }
-async function getData(){
+async function getData(){   
     //boilerplate api call for now to make sure we are hooked up to the api
     const options = {
         method: 'GET',
@@ -88,8 +92,9 @@ async function getData(){
     
 }
 function initChart(chart,teams){
-        const labels = teams.map((key) => key.team.name);
-        const info = teams.map((key) => key.win.total);
+        const ranked = ((teams).slice(0,10));
+        const labels = ranked.map((key) => key.team.name);
+        const info = ranked.map((key) => key.win.total);
         const data = {
           labels: labels,
           datasets: [{
@@ -111,14 +116,10 @@ function initChart(chart,teams){
           config
         );
 }
-function injectHTML(){
-    //inject to html the current winning division or conference based on the comp of totals.
-}
-function compareChart(chart,compResults){
-    
 
-    const labels = Object.keys(compResults);
-    const info = Object.values(compResults);
+function compareChart(chart,compResults){
+    const labels = [compResults[0],compResults[1]];
+    const info = [compResults[2],compResults[3]];
 
     console.log(labels);
     console.log(info);
@@ -129,9 +130,9 @@ function compareChart(chart,compResults){
     })
     chart.update();
 }
+
+
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
 
 
-_____
-______
 
