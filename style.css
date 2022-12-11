@@ -348,7 +348,8 @@ border:#333
    border-radius: 50px;
    color: rgb(255, 255, 255);
    background-color: rgb(99, 1, 1);
-   margin-bottom: 50px;
+   margin-top:10px;
+   margin-left:-45px;
    box-shadow: 0 3px 20px 0 #0000003b;
    
  }
@@ -363,6 +364,6 @@ border:#333
 
  
  .chart_container{
-  width:100%;
+  width:80%;
   height:100%;
  }

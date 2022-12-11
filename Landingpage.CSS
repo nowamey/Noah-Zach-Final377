@@ -34,9 +34,6 @@
    background-color: rgb(114, 51, 51);
    padding-bottom: 10px;
    text-align: center;
-   background-color: rgb(99, 1, 1);
-   opacity: 0.8;
-   
    }
  
  h3, p {
@@ -70,7 +67,6 @@
    box-shadow: 0 3px 20px 0 #0000003b;
    font-size: 2rem;
    
-   opacity: 0.8;  
    
  }
  button:hover{
