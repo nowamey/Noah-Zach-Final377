@@ -9,9 +9,9 @@ async function mainEvent(){
 
     const myChart = initChart(chartTarget,results)
 
-    //let rankings = getRankings(results,10);
-    //injectHTML(rankings)
-    //injectConf(results)
+    let rankings = getRankings(results,10);
+    injectHTML(rankings)
+    injectConf(results)
     
     let option1 = 'Atlantic';
     let option2 = 'Atlantic';
@@ -92,7 +92,8 @@ async function getData(){
     
 }
 function initChart(chart,teams){
-        const ranked = ((teams).slice(0,10));
+        const ranked = (getRankings(teams,10));
+        ;
         const labels = ranked.map((key) => key.team.name);
         const info = ranked.map((key) => key.win.total);
         const data = {
@@ -131,8 +132,57 @@ function compareChart(chart,compResults){
     chart.update();
 }
 
+function injectHTML(list){
+    //inject to html the current winning division or conference based on the comp of totals.
+    console.log('fired injectHTML');
+    const target = document.querySelector("#rankings");
+      
+    target.innerHTML = '';
+      
+    const listEl = document.createElement('ol');
+    target.appendChild(listEl);
+    list.forEach((item) => {
+        const el = document.createElement('li');
+        el.innerText = item.team.name + ' ('+item.win.total+' wins)'
+        listEl.appendChild(el);
+    });
+}
+function getRankings(results,teamsToRank){
+    function compareMethod(team1,team2){
+        return team2.win.total - team1.win.total;
+    }
+    const ranked  = results.sort(compareMethod)
+    console.log(ranked)
+    return ranked.slice(0,teamsToRank);
+}
+function injectConf(results){
+    const east = results.filter((team) => team.conference.name === 'east');
+    const west = results.filter((team) => team.conference.name === 'west');
+    let conf = ''
+    let eastWins = 0;
+    let westWins = 0;
 
+    east.forEach((team) => eastWins+=team.win.total);
+    west.forEach((team) => westWins+=team.win.total);
+    console.log(eastWins);
+    console.log(westWins);
+    
+    if(eastWins > westWins){
+        conf ='The East is the stronger conference with '+(eastWins - westWins)+' more wins than the West!'
+    }else if(westWins>eastWins){
+        conf = 'The West is the stronger conference with '+(westWins-eastWins)+' more wins than the East!'
+    }else{
+        conf = 'Both conferences are currently equal in strength!'; 
+    }
+    console.log(conf)
+    const confTarget = document.querySelector('#conf');
+    const node = document.createTextNode(conf)
+    let answer = document.createElement('p')
+    answer.appendChild(node);
+    console.log(confTarget)
+    confTarget.appendChild(answer);
+    
+} 
 document.addEventListener('DOMContentLoaded', async () => mainEvent());
-
 
 
