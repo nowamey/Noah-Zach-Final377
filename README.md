@@ -1,5 +1,3 @@
- Zack-and-Noah-Final-Project
-12-12 commit test
 
 <h1>NBA Strength Calculator<h1>
 
@@ -43,6 +41,7 @@ of the divisions.
 
 calls updatechart, changing the chart displayed.
 
+
  Inject HTML function 
 THis injects to html the current winning division or conference based on the comp of totals. 
 
@@ -56,3 +55,4 @@ THis figures out which of the conferences is stronger and then displays that, or
 
  CSS documenation 
 Standard CSS framework utilized in the other labs, with 2 specific sections being added to create the parrelax effect on the main site and the banner redirect screen on the landing page
+
