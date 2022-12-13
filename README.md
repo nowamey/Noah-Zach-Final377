@@ -1,3 +1,4 @@
+
 <h1>NBA Strength Calculator<h1>
 
 This project is being hosted on nowamey.github.io
@@ -39,4 +40,19 @@ comparechart adjustst the chart based on the division comparisons and recreates 
 of the divisions.
 
 calls updatechart, changing the chart displayed.
+
+
+ Inject HTML function 
+THis injects to html the current winning division or conference based on the comp of totals. 
+
+ Get rankings Function
+
+THis sorts the rankings of the teams and then returns it sliced
+
+ COnference wins Function 
+
+THis figures out which of the conferences is stronger and then displays that, or a message showing that there was a tie in conference strength. 
+
+ CSS documenation 
+Standard CSS framework utilized in the other labs, with 2 specific sections being added to create the parrelax effect on the main site and the banner redirect screen on the landing page
 
